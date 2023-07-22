@@ -18,8 +18,6 @@ bool check_status(int[][4]);
 
 int main()
 {
-
-    // Making the matrix
     // initialize the game
     srand(time(0));
 
@@ -48,9 +46,7 @@ int main()
             {
                 Matrix[i][j] = 0;
             }
-            // printf("%d ", Matrix[i][j]);
         }
-        // printf("\n");
     }
     Print_Matrix(Matrix);
 
@@ -58,7 +54,6 @@ int main()
     bool game_not_lost = true;
     while (game_not_lost)
     {
-        // printf("Enter character: ");
         if (getc(stdin) == '\033')
         {                // if the first value is esc
             getc(stdin); // skip the [
@@ -68,7 +63,6 @@ int main()
                 // code for arrow up
                 printf("UP\n");
                 Move_up(Matrix, &total_score);
-                // Generate(Matrix);
                 Move_up_generate(Matrix);
                 Print_Matrix(Matrix);
                 printf("Score: %d\n", total_score);
@@ -78,7 +72,6 @@ int main()
                 // code for arrow down
                 printf("DOWN\n");
                 Move_down(Matrix, &total_score);
-                // Generate(Matrix);
                 Move_down_generate(Matrix);
                 Print_Matrix(Matrix);
                 printf("Score: %d\n", total_score);
@@ -88,7 +81,6 @@ int main()
                 // code for arrow right
                 printf("RIGHT\n");
                 Move_right(Matrix, &total_score);
-                // Generate(Matrix);
                 Move_right_generate(Matrix);
                 Print_Matrix(Matrix);
                 printf("Score: %d\n", total_score);
@@ -115,7 +107,6 @@ int main()
 
         if (!game_not_lost)
         {
-            // printf("Lets check!\n");
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -129,19 +120,15 @@ int main()
 
             Move_up(copy1, &checking_score);
             Move_up_status = check_status(copy1);
-            // printf("bool up = %d\n", Move_up_status);
 
             Move_down(copy2, &checking_score);
             Move_down_status = check_status(copy2);
-            // printf("bool down = %d\n", Move_down_status);
 
             Move_left(copy3, &checking_score);
             Move_left_status = check_status(copy3);
-            // printf("bool left = %d\n", Move_left_status);
 
             Move_right(copy4, &checking_score);
             Move_right_status = check_status(copy4);
-            // printf("bool right = %d\n", Move_right_status);
         }
         if (!Move_up_status && !Move_down_status && !Move_left_status && !Move_right_status)
         {
@@ -219,7 +206,6 @@ void Move_down(int Matrix[][4], int *score)
                 int k = i;
                 while (Not_done && k < 3)
                 {
-                    // printf("hiii\n");
                     bool next_zero = false;
                     if (Matrix[k + 1][j] == 0)
                     {
@@ -474,8 +460,6 @@ void Generate(int Matrix[][4])
 {
 
     int random_two_or_four = (rand() % (2) + 1) * 2;
-    // printf("random = %d\n", random_two_or_four);
-    // Prototype
     bool should_return = false;
     for (int i = 0; i < 4; i++)
     {
@@ -484,8 +468,6 @@ void Generate(int Matrix[][4])
             if (Matrix[i][j] == 0)
             {
                 Matrix[i][j] = random_two_or_four;
-                // printf("check = %d\n", Matrix[i][j]);
-                // printf("random = %d\n", random_two_or_four);
                 should_return = true;
                 break;
             }
@@ -495,7 +477,6 @@ void Generate(int Matrix[][4])
             break;
         }
     }
-    // Print_Matrix(Matrix);
     return;
 }
 
